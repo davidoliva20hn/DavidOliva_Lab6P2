@@ -470,16 +470,17 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         //Aggregar1
+        
         DefaultTreeModel m = (DefaultTreeModel) ArbolEquipo.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
-        DefaultMutableTreeNode equipo;
-         equipo= new DefaultMutableTreeNode(new Equipos(jTextField2.getText(), jTextField1.getText(), jTextField3.getText(),jTextField4.getText()));
+        DefaultMutableTreeNode pais;
+        pais = new DefaultMutableTreeNode(new Equipos(jTextField2.getText(), jTextField1.getText(), jTextField3.getText(),jTextField4.getText()));
         DefaultMutableTreeNode nomequipo;
         nomequipo = new DefaultMutableTreeNode(jTextField2.getText());
-        equipo.add(nomequipo);
-        raiz.add(equipo);
+        pais.add(nomequipo);
+        raiz.add(pais);
         m.reload();
-
+        System.out.println(m.getRoot());
     }//GEN-LAST:event_jButton4MouseClicked
 
     /**
