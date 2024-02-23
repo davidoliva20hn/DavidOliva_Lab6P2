@@ -1,3 +1,7 @@
+
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -47,13 +51,13 @@ public class Principal extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jTextField5 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        jDialog1 = new javax.swing.JDialog();
+        Transferencia = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        ArbolEquipo = new javax.swing.JTree();
         jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jToolBar2 = new javax.swing.JToolBar();
@@ -81,6 +85,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Agregar");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -263,8 +272,8 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane2.setViewportView(jTree1);
+        ArbolEquipo.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(ArbolEquipo);
 
         jButton6.setText("Transferir   -->");
 
@@ -302,14 +311,14 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout TransferenciaLayout = new javax.swing.GroupLayout(Transferencia.getContentPane());
+        Transferencia.getContentPane().setLayout(TransferenciaLayout);
+        TransferenciaLayout.setHorizontalGroup(
+            TransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        TransferenciaLayout.setVerticalGroup(
+            TransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -356,6 +365,11 @@ public class Principal extends javax.swing.JFrame {
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jToolBar2.add(jButton3);
 
         jPanel1.add(jToolBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
@@ -387,6 +401,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem3.setText("Transferencias");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
@@ -439,6 +458,30 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenu1ActionPerformed
 
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        AbrirTransferencias();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        AbrirTransferencias();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        //Aggregar1
+        DefaultTreeModel m = (DefaultTreeModel) ArbolEquipo.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode equipo;
+         equipo= new DefaultMutableTreeNode(new Equipos(jTextField2.getText(), jTextField1.getText(), jTextField3.getText(),jTextField4.getText()));
+        DefaultMutableTreeNode nomequipo;
+        nomequipo = new DefaultMutableTreeNode(jTextField2.getText());
+        equipo.add(nomequipo);
+        raiz.add(equipo);
+        m.reload();
+
+    }//GEN-LAST:event_jButton4MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -475,8 +518,10 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTree ArbolEquipo;
     private javax.swing.JDialog CrearEquipos;
     private javax.swing.JDialog CrearJugadores;
+    private javax.swing.JDialog Transferencia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -484,7 +529,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -515,7 +559,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JToolBar jToolBar2;
-    private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
 
     private void AbrirCrearEquipos() {
@@ -533,6 +576,9 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void AbrirTransferencias() {
-        
+        Transferencia.pack();
+        Transferencia.setLocationRelativeTo(this);
+        Transferencia.setModal(rootPaneCheckingEnabled);
+        Transferencia.setVisible(true);
     }
 }
