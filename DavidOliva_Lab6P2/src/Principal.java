@@ -598,13 +598,13 @@ public class Principal extends javax.swing.JFrame {
         DefaultTreeModel m = (DefaultTreeModel) ArbolEquipo.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
         DefaultMutableTreeNode pais;
+        
         pais = new DefaultMutableTreeNode(new Equipos(jTextField2.getText(), jTextField1.getText(), jTextField3.getText(), jTextField4.getText()));
         DefaultMutableTreeNode nomequipo;
         nomequipo = new DefaultMutableTreeNode(jTextField2.getText());
         pais.add(nomequipo);
         raiz.add(pais);
         m.reload();
-        raiz.getFirstChild();
         System.out.println(raiz.getFirstChild());
     }//GEN-LAST:event_jButton4MouseClicked
 
