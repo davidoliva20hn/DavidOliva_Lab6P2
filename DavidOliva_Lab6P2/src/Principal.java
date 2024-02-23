@@ -1,4 +1,5 @@
 
+import javax.swing.DefaultListModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -59,6 +60,19 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         ArbolEquipo = new javax.swing.JTree();
         jButton6 = new javax.swing.JButton();
+        Eliminarnodo = new javax.swing.JPopupMenu();
+        Eliminar = new javax.swing.JMenuItem();
+        poplista = new javax.swing.JPopupMenu();
+        Modificarjugador = new javax.swing.JMenuItem();
+        EliminarJugador = new javax.swing.JMenuItem();
+        Modifi = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jSpinner2 = new javax.swing.JSpinner();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jToolBar2 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
@@ -195,11 +209,16 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setText("Edad");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "portero", "defensa", "centrocampista ", "delantero" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Defensa ", "Mediocampista ", "Delantero" }));
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(15, 15, 45, 1));
 
         jButton5.setText("Agregar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -269,10 +288,26 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Transferencia");
 
+        jList1.setModel(new DefaultListModel());
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
         ArbolEquipo.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        ArbolEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ArbolEquipoMouseClicked(evt);
+            }
+        });
+        ArbolEquipo.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
+                ArbolEquipoValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(ArbolEquipo);
 
         jButton6.setText("Transferir   -->");
@@ -320,6 +355,97 @@ public class Principal extends javax.swing.JFrame {
         TransferenciaLayout.setVerticalGroup(
             TransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        Eliminar.setText("Eliminar");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
+        Eliminarnodo.add(Eliminar);
+
+        Modificarjugador.setText("Modificar");
+        Modificarjugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarjugadorActionPerformed(evt);
+            }
+        });
+        poplista.add(Modificarjugador);
+
+        EliminarJugador.setText("Eliminar");
+        poplista.add(EliminarJugador);
+
+        jLabel11.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        jLabel11.setText("Modificar Jugador");
+
+        jLabel12.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel12.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        jLabel12.setText("Nombre");
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(15, 15, 45, 1));
+
+        jLabel13.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        jLabel13.setText("Edad");
+
+        jButton7.setText("Modificar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(42, 42, 42)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton7)
+                                    .addComponent(jSpinner2))))
+                        .addGap(50, 50, 50))))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel11)
+                .addGap(48, 48, 48)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jButton7)
+                .addGap(46, 46, 46))
+        );
+
+        javax.swing.GroupLayout ModifiLayout = new javax.swing.GroupLayout(Modifi.getContentPane());
+        Modifi.getContentPane().setLayout(ModifiLayout);
+        ModifiLayout.setHorizontalGroup(
+            ModifiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        ModifiLayout.setVerticalGroup(
+            ModifiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -469,19 +595,57 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        //Aggregar1
-        
         DefaultTreeModel m = (DefaultTreeModel) ArbolEquipo.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
         DefaultMutableTreeNode pais;
-        pais = new DefaultMutableTreeNode(new Equipos(jTextField2.getText(), jTextField1.getText(), jTextField3.getText(),jTextField4.getText()));
+        pais = new DefaultMutableTreeNode(new Equipos(jTextField2.getText(), jTextField1.getText(), jTextField3.getText(), jTextField4.getText()));
         DefaultMutableTreeNode nomequipo;
         nomequipo = new DefaultMutableTreeNode(jTextField2.getText());
         pais.add(nomequipo);
         raiz.add(pais);
         m.reload();
-        System.out.println(m.getRoot());
+        raiz.getFirstChild();
+        System.out.println(raiz.getFirstChild());
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void ArbolEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ArbolEquipoMouseClicked
+        Eliminarnodo.show(evt.getComponent(), evt.getX(), evt.getY());
+    }//GEN-LAST:event_ArbolEquipoMouseClicked
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        DefaultTreeModel m = (DefaultTreeModel) ArbolEquipo.getModel();
+        m.removeNodeFromParent(nodo_selec);
+    }//GEN-LAST:event_EliminarActionPerformed
+
+    private void ArbolEquipoValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_ArbolEquipoValueChanged
+        nodo_selec = (DefaultMutableTreeNode) ArbolEquipo.getLastSelectedPathComponent();
+    }//GEN-LAST:event_ArbolEquipoValueChanged
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        DefaultListModel modelo = (DefaultListModel) jList1.getModel();
+        modelo.addElement(new Jugadores(jTextField5.getText(), Integer.parseInt(jSpinner1.getValue().toString()),
+                jComboBox1.getSelectedItem().toString()));
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+       poplista.show(evt.getComponent(), evt.getX(), evt.getY());
+    }//GEN-LAST:event_jList1MouseClicked
+
+    private void ModificarjugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarjugadorActionPerformed
+        Modifi.pack();
+        Modifi.setLocationRelativeTo(this);
+        Modifi.setModal(rootPaneCheckingEnabled);
+        Modifi.setVisible(true);
+    }//GEN-LAST:event_ModificarjugadorActionPerformed
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        DefaultListModel modelo = (DefaultListModel) jList1.getModel();
+        modelo.set(jList1.getSelectedIndex(), new Jugadores(jTextField6.getText(),
+                Integer.parseInt(jSpinner2.getValue().toString())));
+        jList1.setModel(modelo);
+        jTextField6.setText("");
+        Modifi.setVisible(false);
+    }//GEN-LAST:event_jButton7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -522,6 +686,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTree ArbolEquipo;
     private javax.swing.JDialog CrearEquipos;
     private javax.swing.JDialog CrearJugadores;
+    private javax.swing.JMenuItem Eliminar;
+    private javax.swing.JMenuItem EliminarJugador;
+    private javax.swing.JPopupMenu Eliminarnodo;
+    private javax.swing.JDialog Modifi;
+    private javax.swing.JMenuItem Modificarjugador;
     private javax.swing.JDialog Transferencia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -529,9 +698,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -551,17 +724,22 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JPopupMenu poplista;
     // End of variables declaration//GEN-END:variables
 
+     DefaultMutableTreeNode nodo_selec;
     private void AbrirCrearEquipos() {
         CrearEquipos.pack();
         CrearEquipos.setLocationRelativeTo(this);
