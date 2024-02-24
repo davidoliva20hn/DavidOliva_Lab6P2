@@ -1,7 +1,9 @@
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -73,11 +75,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jToolBar2 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -294,6 +299,11 @@ public class Principal extends javax.swing.JFrame {
                 jList1MouseClicked(evt);
             }
         });
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
@@ -311,6 +321,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(ArbolEquipo);
 
         jButton6.setText("Transferir   -->");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -374,6 +389,11 @@ public class Principal extends javax.swing.JFrame {
         poplista.add(Modificarjugador);
 
         EliminarJugador.setText("Eliminar");
+        EliminarJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarJugadorActionPerformed(evt);
+            }
+        });
         poplista.add(EliminarJugador);
 
         jLabel11.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
@@ -448,15 +468,17 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2024-02-23 195405.png"))); // NOI18N
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(13, 11, 14));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jToolBar2.setBackground(new java.awt.Color(102, 204, 255));
+        jToolBar2.setBackground(new java.awt.Color(51, 51, 51));
         jToolBar2.setRollover(true);
 
-        jButton1.setBackground(new java.awt.Color(102, 204, 255));
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Crear Equipo");
@@ -470,7 +492,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jToolBar2.add(jButton1);
 
-        jButton2.setBackground(new java.awt.Color(102, 204, 255));
+        jButton2.setBackground(new java.awt.Color(51, 51, 51));
         jButton2.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Crear Jugadores");
@@ -484,7 +506,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jToolBar2.add(jButton2);
 
-        jButton3.setBackground(new java.awt.Color(102, 204, 255));
+        jButton3.setBackground(new java.awt.Color(51, 51, 51));
         jButton3.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Transferencias");
@@ -499,6 +521,14 @@ public class Principal extends javax.swing.JFrame {
         jToolBar2.add(jButton3);
 
         jPanel1.add(jToolBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
+
+        jLabel15.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Bienvenido a Boroa League Fantasy.");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2024-02-23 195405_1.png"))); // NOI18N
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 40, 700, 420));
 
         jMenu1.setText("Opciones");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -610,12 +640,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void ArbolEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ArbolEquipoMouseClicked
-        Eliminarnodo.show(evt.getComponent(), evt.getX(), evt.getY());
+        if (evt.getButton() == 3) {
+            Eliminarnodo.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
     }//GEN-LAST:event_ArbolEquipoMouseClicked
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         DefaultTreeModel m = (DefaultTreeModel) ArbolEquipo.getModel();
-        m.removeNodeFromParent(nodo_selec);
+        if (nodo_selec.toString().equals("Equipos")) {
+            JOptionPane.showMessageDialog(Transferencia, "No se pude eliminar Equipos");
+        } else {
+            m.removeNodeFromParent(nodo_selec);
+        }
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void ArbolEquipoValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_ArbolEquipoValueChanged
@@ -629,7 +665,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-       poplista.show(evt.getComponent(), evt.getX(), evt.getY());
+        if (evt.getButton() == 3) {
+            poplista.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
     }//GEN-LAST:event_jList1MouseClicked
 
     private void ModificarjugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarjugadorActionPerformed
@@ -647,6 +685,36 @@ public class Principal extends javax.swing.JFrame {
         jTextField6.setText("");
         Modifi.setVisible(false);
     }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        DefaultListModel modelo = (DefaultListModel) jList1.getModel();//cambia el nombre de la lista
+        DefaultTreeModel m = (DefaultTreeModel) ArbolEquipo.getModel();
+        System.out.println(nodo_selec);
+        
+        if (modelo.isEmpty()) {
+          JOptionPane.showMessageDialog(Transferencia,"no hay datos en la lista" );
+        }else if (nodo_selec.toString().equals("Equipos")) {
+            JOptionPane.showMessageDialog(Transferencia,"El nodo selecionado es incorecto" );
+        }else if(nodo_selec.toString().equalsIgnoreCase("null")){
+             JOptionPane.showMessageDialog(Transferencia,"no hay nodo selecionado." );
+        }else{
+        DefaultMutableTreeNode posicion;
+        posicion = new DefaultMutableTreeNode(((Jugadores) modelo.get(jList1.getSelectedIndex())).getPosición());
+        DefaultMutableTreeNode n = new DefaultMutableTreeNode(modelo.get(jList1.getSelectedIndex()));
+        posicion.add(n);
+        m.insertNodeInto(posicion, nodo_selec, nodo_selec.getChildCount());  
+        }                
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jList1ValueChanged
+
+    private void EliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarJugadorActionPerformed
+        DefaultListModel modelo = (DefaultListModel) jList1.getModel();//cambia el nombre de la lista
+        modelo.remove(jList1.getSelectedIndex());
+        jList1.setModel(modelo);
+    }//GEN-LAST:event_EliminarJugadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -682,7 +750,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
-
+    DefaultListModel honal;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTree ArbolEquipo;
     private javax.swing.JDialog CrearEquipos;
@@ -706,6 +774,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
