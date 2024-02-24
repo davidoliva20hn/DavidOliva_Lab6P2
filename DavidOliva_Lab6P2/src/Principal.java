@@ -599,6 +599,7 @@ public class Principal extends javax.swing.JFrame {
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
         DefaultMutableTreeNode pais;
         
+        
         pais = new DefaultMutableTreeNode(new Equipos(jTextField2.getText(), jTextField1.getText(), jTextField3.getText(), jTextField4.getText()));
         DefaultMutableTreeNode nomequipo;
         nomequipo = new DefaultMutableTreeNode(jTextField2.getText());
