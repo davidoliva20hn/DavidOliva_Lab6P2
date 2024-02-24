@@ -636,7 +636,7 @@ public class Principal extends javax.swing.JFrame {
         pais.add(nomequipo);
         raiz.add(pais);
         m.reload();
-        System.out.println(raiz.getFirstChild());
+       JOptionPane.showMessageDialog(CrearEquipos, "Se agrego correctamente");
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void ArbolEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ArbolEquipoMouseClicked
@@ -662,6 +662,7 @@ public class Principal extends javax.swing.JFrame {
         DefaultListModel modelo = (DefaultListModel) jList1.getModel();
         modelo.addElement(new Jugadores(jTextField5.getText(), Integer.parseInt(jSpinner1.getValue().toString()),
                 jComboBox1.getSelectedItem().toString()));
+        JOptionPane.showMessageDialog(CrearJugadores, "Se agrego correctamente");
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
@@ -686,6 +687,7 @@ public class Principal extends javax.swing.JFrame {
                     Integer.parseInt(jSpinner2.getValue().toString())));
             jList1.setModel(modelo);
             jTextField6.setText("");
+            JOptionPane.showMessageDialog(Modifi, "Se Modifico correctamente");
             Modifi.setVisible(false);
         }
     }//GEN-LAST:event_jButton7MouseClicked
@@ -707,6 +709,7 @@ public class Principal extends javax.swing.JFrame {
         DefaultMutableTreeNode n = new DefaultMutableTreeNode(modelo.get(jList1.getSelectedIndex()));
         posicion.add(n);
         m.insertNodeInto(posicion, nodo_selec, nodo_selec.getChildCount());  
+        JOptionPane.showMessageDialog(null, "se transfirio correctamente");
         }                
     }//GEN-LAST:event_jButton6MouseClicked
 
