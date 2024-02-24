@@ -678,12 +678,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificarjugadorActionPerformed
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        DefaultListModel modelo = (DefaultListModel) jList1.getModel();
-        modelo.set(jList1.getSelectedIndex(), new Jugadores(jTextField6.getText(),
-                Integer.parseInt(jSpinner2.getValue().toString())));
-        jList1.setModel(modelo);
-        jTextField6.setText("");
-        Modifi.setVisible(false);
+        if (jTextField6.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(Modifi, "solo se pude letras en nombre");
+        } else {
+            DefaultListModel modelo = (DefaultListModel) jList1.getModel();
+            modelo.set(jList1.getSelectedIndex(), new Jugadores(jTextField6.getText(),
+                    Integer.parseInt(jSpinner2.getValue().toString())));
+            jList1.setModel(modelo);
+            jTextField6.setText("");
+            Modifi.setVisible(false);
+        }
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
